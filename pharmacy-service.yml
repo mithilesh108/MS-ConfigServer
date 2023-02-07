@@ -2,7 +2,7 @@
 emp: 
   id: 1
   name: mk dev update
-  address: jamni
+  address: jamni update
 server:
   port: 8081
 spring:
