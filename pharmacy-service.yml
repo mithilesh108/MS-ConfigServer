@@ -48,7 +48,7 @@ spring:
 emp: 
   id: 3
   name: mk prod update
-  address: jamni
+  address: jamni prod
 server:
   port: 8081
 spring:
