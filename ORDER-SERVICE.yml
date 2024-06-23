@@ -10,7 +10,7 @@ management:
 ms:
   order:
     category:
-      price: 3000
+      price: 4000
 spring:
   rabbitmq:
     host: localhost
