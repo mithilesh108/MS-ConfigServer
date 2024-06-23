@@ -6,12 +6,8 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh, bus-refresh
+        include: refresh
 ms:
   order:
     category:
       price: 4000
-spring:
-  rabbitmq:
-    host: localhost
-    port: 5672
