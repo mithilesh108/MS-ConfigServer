@@ -11,9 +11,12 @@ spring:
       server:
         git:
           uri: https://github.com/mithilesh108/MS-ConfigServer
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: false
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
+          #This setting ensures Config Server checks Git repository every 180 seconds(3 minutes) for changes.
+          #refresh-rate: 18
+# To register cloud config server as client at eureka server, we can run config server independent as well
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: false
+#    service-url:
+#      defaultZone: http://localhost:8762/admin/eureka/

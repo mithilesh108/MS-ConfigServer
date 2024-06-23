@@ -3,6 +3,8 @@ package com.cts.controller;
 import com.cts.dto.OrderDTO;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +18,17 @@ import java.util.List;
 @RestController
 @RequestMapping("/order")
 @Slf4j
+@RefreshScope
 public class OrderController {
     private List<OrderDTO> listDto = new ArrayList<>();
+
+    @Value("${ms.order.category.price}")
+    private String value;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity findById(@PathVariable("id") int id){
         log.info("CustomerController class getCustomerById method");
+        System.out.println("Value from properties : "+value);
         return listDto.size() > id
                 ? ResponseEntity.status(HttpStatus.OK).body(listDto.get(id-1))
                 : ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Record not found");
@@ -29,6 +36,7 @@ public class OrderController {
 
     @GetMapping
     public ResponseEntity<List<OrderDTO>> getAllCustomers(){
+        System.out.println("Value from properties : "+value);
         log.info("CustomerController class getAllCustomers method");
         return ResponseEntity.status(HttpStatus.OK).body(listDto);
     }
@@ -40,5 +48,6 @@ public class OrderController {
         listDto.add(new OrderDTO(3, "ravi", "hyd","car"));
         listDto.add(OrderDTO.builder().id(4).name("satish").address("hyd").category("Pant").build());
         System.out.println(listDto);
+        System.out.println("Value from properties : "+value);
     }
 }
